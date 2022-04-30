@@ -9,6 +9,9 @@ plugins {
     kotlin("jvm") version "1.6.21"
                 id("org.jetbrains.kotlin.plugin.serialization") version "1.6.21"
 }
+tasks.create("stage") {
+    dependsOn("installDist")
+}
 
 group = "com.mydesign"
 version = "0.0.1"
@@ -19,10 +22,6 @@ application {
     applicationDefaultJvmArgs = listOf("-Dio.ktor.development=$isDevelopment")
 }
 
-
-tasks.create("stage") {
-    dependsOn("installDist")
-}
 
 repositories {
     mavenCentral()
